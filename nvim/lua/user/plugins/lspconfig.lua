@@ -129,7 +129,7 @@ require('lspconfig').sumneko_lua.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   -- cmd = { '/opt/lua-language-server/bin/lua-language-server', '-E', '/opt/lua-language-server/bin/main.lua' },
-  cmd = { '/opt/lua-language-server/bin/lua-language-server' },
+  cmd = { 'lua-language-server' },
   settings = {
     Lua = {
       runtime = {
