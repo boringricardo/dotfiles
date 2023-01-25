@@ -49,13 +49,13 @@ use('jessarcher/vim-heritage') -- Automatically create parent dirs when saving
 use('nelstrom/vim-visual-star-search')
 -- use { 'posva/vim-vue' }
 
-use({
-  'tpope/vim-projectionist',
-  requires = 'tpope/vim-dispatch',
-  config = function()
-    require('user.plugins.projectionist')
-  end,
-})
+--use({
+--  'tpope/vim-projectionist',
+--  requires = 'tpope/vim-dispatch',
+--  config = function()
+--    require('user.plugins.projectionist')
+--  end,
+--})
 
 use({
   'jessarcher/onedark.nvim',
