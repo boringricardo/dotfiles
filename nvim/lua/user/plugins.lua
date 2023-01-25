@@ -171,12 +171,12 @@ use({
 --  end,
 --})
 
---use({
---  'voldikss/vim-floaterm',
---  config = function()
---    require('user.plugins.floaterm')
---  end,
---})
+use({
+  'voldikss/vim-floaterm',
+  config = function()
+    require('user.plugins.floaterm')
+  end,
+})
 
 use({
   'nvim-telescope/telescope.nvim',
