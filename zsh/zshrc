@@ -87,6 +87,7 @@ alias main='git checkout $([ `git rev-parse --quiet --verify master` ] && echo "
 # Docker
 alias d="docker"
 alias dc="docker compose"
+alias docker-compose="docker compose"
 
 open () {
     xdg-open $* > /dev/null 2>&1
@@ -98,3 +99,9 @@ composer-link() {
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
+export PATH="$PATH:$HOME/.asdf/shims"
+
+source $HOME/awsp_functions.sh
+
+export XDG_CONFIG_HOME="$HOME/.config"
+eval "$(direnv hook zsh)"
