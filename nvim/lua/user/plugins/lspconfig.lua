@@ -53,7 +53,7 @@ local function get_typescript_server_path(root_dir)
   local project_root = util.find_node_modules_ancestor(root_dir)
 
   local local_tsserverlib = project_root ~= nil and util.path.join(project_root, 'node_modules', 'typescript', 'lib', 'tsserverlibrary.js')
-  local global_tsserverlib = '/home/jess/.local/lib/node_modules/typescript/lib/tsserverlibrary.js'
+  local global_tsserverlib = '/home/ricardo/.asdf/installs/nodejs/19.5.0/lib/node_modules/typescript/lib/tsserverlibrary.js'
 
   if local_tsserverlib and util.path.exists(local_tsserverlib) then
     return local_tsserverlib
@@ -75,6 +75,7 @@ require('lspconfig').dockerls.setup({
 require('lspconfig').emmet_ls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
+  filetypes = { 'blade', 'html', 'typescriptreact', 'javascriptreact', 'css' }
 })
 
 require('lspconfig').html.setup({
@@ -91,15 +92,15 @@ require('lspconfig').intelephense.setup({
   capabilities = capabilities,
 })
 
--- require'lspconfig'.phpactor.setup{
---   cmd = { '/home/jess/.local/share/nvim/site/pack/packer/opt/phpactor/bin/phpactor', 'language-server' },
---   on_attach = on_attach,
---   capabilities = capabilities,
---   init_options = {
---     ["language_server_phpstan.enabled"] = false,
---     ["language_server_psalm.enabled"] = false,
---   }
--- }
+require'lspconfig'.phpactor.setup{
+  cmd = { '/home/ricardo/.local/share/nvim/site/pack/packer/opt/phpactor/bin/phpactor', 'language-server' },
+  on_attach = on_attach,
+  capabilities = capabilities,
+  init_options = {
+    ["language_server_phpstan.enabled"] = false,
+    ["language_server_psalm.enabled"] = false,
+  }
+}
 
 require('lspconfig').jsonls.setup({
   on_attach = on_attach,
@@ -154,6 +155,7 @@ require('lspconfig').sumneko_lua.setup({
 require('lspconfig').tailwindcss.setup({
   on_attach = on_attach,
   capabilities = capabilities,
+  filetypes = { 'typescript', 'javascript', 'typescriptreact', 'javascriptreact', 'html', 'blade', 'css' }
 })
 
 require('lspconfig').volar.setup({

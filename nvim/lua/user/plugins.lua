@@ -283,15 +283,15 @@ use({
   end,
 })
 
---use({
---  'phpactor/phpactor',
---  branch = 'master',
---  ft = 'php',
---  run = 'composer install --no-dev -o',
---  config = function()
---    require('user.plugins.phpactor')
---  end,
---})
+use({
+  'phpactor/phpactor',
+  branch = 'master',
+  ft = 'php',
+  run = 'composer install --no-dev -o',
+  config = function()
+    require('user.plugins.phpactor')
+  end,
+})
 
 -- Experimental
 
@@ -317,9 +317,9 @@ use({
 --  requires = 'nvim-treesitter/nvim-treesitter',
 --})
 
---use({
---  'sheerun/vim-polyglot',
---})
+use({
+  'sheerun/vim-polyglot',
+})
 
 -- Rename in a popup window
 --use({
