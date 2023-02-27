@@ -49,13 +49,13 @@ use('jessarcher/vim-heritage') -- Automatically create parent dirs when saving
 use('nelstrom/vim-visual-star-search')
 -- use { 'posva/vim-vue' }
 
---use({
---  'tpope/vim-projectionist',
---  requires = 'tpope/vim-dispatch',
---  config = function()
---    require('user.plugins.projectionist')
---  end,
---})
+use({
+  'tpope/vim-projectionist',
+  requires = 'tpope/vim-dispatch',
+  config = function()
+    require('user.plugins.projectionist')
+  end,
+})
 
 use({
   'jessarcher/onedark.nvim',
@@ -164,12 +164,12 @@ use({
   end,
 })
 
---use({
---  'vim-test/vim-test',
---  config = function()
---    require('user.plugins.vim-test')
---  end,
---})
+use({
+  'vim-test/vim-test',
+  config = function()
+    require('user.plugins.vim-test')
+  end,
+})
 
 use({
   'voldikss/vim-floaterm',
@@ -227,6 +227,8 @@ use({
 use({
   'neovim/nvim-lspconfig',
   requires = {
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
     'b0o/schemastore.nvim',
     'folke/lsp-colors.nvim',
   },
@@ -242,6 +244,9 @@ use({
 
 use({
   'jose-elias-alvarez/null-ls.nvim',
+  requires = {
+    'jay-babu/mason-null-ls.nvim'
+  },
   config = function()
     require('user.plugins.null-ls')
   end,

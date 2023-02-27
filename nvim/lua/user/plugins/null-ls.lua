@@ -9,7 +9,7 @@ require('null-ls').setup({
     require('null-ls').builtins.code_actions.proselint,
     require('null-ls').builtins.diagnostics.eslint_d.with({
       condition = function(utils)
-        return utils.root_has_file({ '.eslintrc.js' })
+        return utils.root_has_file({ '.eslintrc.js' }) or utils.root_has_file({ '.eslintrc.cjs' })
       end,
     }),
     require('null-ls').builtins.diagnostics.proselint,
@@ -18,11 +18,10 @@ require('null-ls').setup({
       extra_args = { '--config', vim.fn.stdpath('config') .. '/.luacheckrc' },
     }),
     -- require("null-ls").builtins.diagnostics.phpstan,
-    require('null-ls').builtins.diagnostics.solhint,
     require('null-ls').builtins.diagnostics.trail_space.with({ disabled_filetypes = { 'NvimTree' } }),
     require('null-ls').builtins.formatting.eslint_d.with({
       condition = function(utils)
-        return utils.root_has_file({ '.eslintrc.js' })
+        return utils.root_has_file({ '.eslintrc.js' }) or utils.root_has_file({ '.eslintrc.cjs' })
       end,
     }),
     require('null-ls').builtins.formatting.prettierd,
@@ -32,3 +31,9 @@ require('null-ls').setup({
     require('null-ls').builtins.formatting.stylua,
   },
 })
+
+require('mason-null-ls').setup({ automatic_installation = true })
+
+-- Commands
+vim.api.nvim_create_user_command('Format', vim.lsp.buf.formatting, {})
+

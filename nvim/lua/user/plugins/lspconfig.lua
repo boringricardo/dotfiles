@@ -1,5 +1,9 @@
 local util = require('lspconfig.util')
 
+-- Setup Mason to automatically install LSP servers
+require('mason').setup()
+require('mason-lspconfig').setup({ automatic_installation = true })
+
 vim.api.nvim_create_user_command('Format', vim.lsp.buf.formatting_seq_sync, {})
 
 vim.keymap.set('n', '<leader>ca', ':CodeActionMenu<CR>')
@@ -112,21 +116,10 @@ require('lspconfig').jsonls.setup({
   },
 })
 
-require('lspconfig').solang.setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-  cmd = { 'solang', '--language-server', '--target', 'ewasm', '--importpath', 'node_modules' },
-})
-
-require('lspconfig').sqls.setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-})
-
 -- local runtime_path = vim.split(package.path, ';')
 -- table.insert(runtime_path, 'lua/?.lua')
 -- table.insert(runtime_path, 'lua/?/init.lua')
-require('lspconfig').sumneko_lua.setup({
+require('lspconfig').lua_ls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   -- cmd = { '/opt/lua-language-server/bin/lua-language-server', '-E', '/opt/lua-language-server/bin/main.lua' },
@@ -158,6 +151,12 @@ require('lspconfig').tailwindcss.setup({
   filetypes = { 'typescript', 'javascript', 'typescriptreact', 'javascriptreact', 'html', 'blade', 'css' }
 })
 
+require('lspconfig').tsserver.setup({
+    on_attach = on_attach,
+    filetypes = { 'typescriptreact', 'javascriptreact', 'typescript', 'javascript', 'typescript.tsx', 'javascript.jsx' },
+    cmd = { 'typescript-language-server', '--stdio' }
+  })
+
 require('lspconfig').volar.setup({
   on_attach = function(client, bufnr)
     on_attach(client, bufnr)
@@ -172,6 +171,20 @@ require('lspconfig').volar.setup({
   -- This drastically improves the responsiveness of diagnostic updates on change
   filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
 })
+
+local path_to_elixirls = vim.fn.expand("~/elixir-ls/release/language_server.sh")
+
+require('lspconfig').elixirls.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    cmd = { path_to_elixirls },
+    settings = {
+      elixirLS = {
+        dialyzerEnabled = false,
+        fetchDeps = false
+      }
+    }
+  })
 
 vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSignError' })
 vim.fn.sign_define('DiagnosticSignWarn', { text = '', texthl = 'DiagnosticSignWarn' })

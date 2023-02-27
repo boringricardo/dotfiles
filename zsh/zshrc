@@ -80,6 +80,7 @@ alias mfs="artisan migrate:fresh --seed"
 # Git
 alias g="git"
 alias gs="git s"
+alias gl="git log -10 --reverse"
 alias nah="git reset --hard;git clean -df"
 alias co="git checkout"
 alias main='git checkout $([ `git rev-parse --quiet --verify master` ] && echo "master" || echo "main")'
@@ -105,3 +106,6 @@ source $HOME/awsp_functions.sh
 
 export XDG_CONFIG_HOME="$HOME/.config"
 eval "$(direnv hook zsh)"
+
+export NODE_OPTIONS="--max-old-space-size=4096"
+export COMPOSER_HOME="$HOME/.config/composer"
