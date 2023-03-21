@@ -109,3 +109,7 @@ eval "$(direnv hook zsh)"
 
 export NODE_OPTIONS="--max-old-space-size=4096"
 export COMPOSER_HOME="$HOME/.config/composer"
+
+export FLYCTL_INSTALL="$HOME/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
+
