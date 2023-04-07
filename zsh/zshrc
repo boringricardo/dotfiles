@@ -107,7 +107,7 @@ source $HOME/awsp_functions.sh
 export XDG_CONFIG_HOME="$HOME/.config"
 eval "$(direnv hook zsh)"
 
-export NODE_OPTIONS="--max-old-space-size=4096"
+export NODE_OPTIONS="--max-old-space-size=8192"
 export COMPOSER_HOME="$HOME/.config/composer"
 
 export FLYCTL_INSTALL="$HOME/.fly"
